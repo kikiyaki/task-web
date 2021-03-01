@@ -1,11 +1,11 @@
 services:
-  nodejs:
-    image: node:12
-    container_name: web-nodejs
-    working_dir: /application
-    volumes:
-      - ./application:/application
-    command: npm run build
+#  nodejs:
+#    image: node:12
+#    container_name: web-nodejs
+#    working_dir: /application
+#    volumes:
+#      - ./application:/application
+#    command: npm run build
 
   nginx:
     image: nginx:latest
