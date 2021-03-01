@@ -26,5 +26,5 @@ jobs:
           sudo ssh-keyscan 35.228.12.69 >> ~/.ssh/known_hosts
         
       - name: Send files
-        run: rsync --delete --recursive --omit-dir-times -e "ssh -i ~/.ssh/garden-web" application/build/ kirill60@35.228.12.69:~/task-web/application/build/
+        run: rsync --delete --recursive --omit-dir-times -e "ssh -i ~/.ssh/task-web" application/build/ kirill60@35.228.12.69:~/task-web/application/build/
 
