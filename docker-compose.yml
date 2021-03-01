@@ -1,19 +1,19 @@
 services:
-#  nodejs:
-#    image: node:12
-#    container_name: web-nodejs
-#    working_dir: /application
-#    volumes:
-#      - ./application:/application
-#    command: npm run build
-
-  nginx:
-    image: nginx:latest
-    container_name: web-nginx
-    ports:
-      - 80:80
+  nodejs:
+    image: node:12
+    container_name: web-nodejs
+    working_dir: /application
     volumes:
-      - ./application/build:/var/www
-      - ./container/nginx/core:/etc/nginx/conf.d
-      - ./container/nginx/logs:/var/log/nginx/
-      - ./container/nginx/html:/usr/share/nginx/html/
+      - ./application:/application
+    command: npm run build
+
+#  nginx:
+#    image: nginx:latest
+#    container_name: web-nginx
+#    ports:
+#      - 80:80
+#    volumes:
+#      - ./application/build:/var/www
+#      - ./container/nginx/core:/etc/nginx/conf.d
+#      - ./container/nginx/logs:/var/log/nginx/
+#      - ./container/nginx/html:/usr/share/nginx/html/
