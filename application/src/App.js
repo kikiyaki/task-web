@@ -1,7 +1,7 @@
 
 function App() {
   return (
-    <div>Aaaaa</div>
+    <div className="wrapper">Aaaaa</div>
   );
 }
 
