@@ -17,14 +17,14 @@ jobs:
         run: |
           sudo mkdir ~/.ssh
           sudo chmod -R 0777 ~/.ssh
-          sudo printf -- "${{ secrets.SSH_KEY }}" >> ~/.ssh/garden-web
-          sudo echo "${{ secrets.SSH_KEY_PUB }}" >> ~/.ssh/garden-web.pub
-          sudo chmod 400 ~/.ssh/garden-web.pub
-          sudo chmod 400 ~/.ssh/garden-web 
+          sudo printf -- "${{ secrets.SSH_KEY }}" >> ~/.ssh/task-web
+          sudo echo "${{ secrets.SSH_KEY_PUB }}" >> ~/.ssh/task-web.pub
+          sudo chmod 400 ~/.ssh/task-web.pub
+          sudo chmod 400 ~/.ssh/task-web 
           sudo touch ~/.ssh/known_hosts
           sudo chmod 0777 ~/.ssh/known_hosts
           sudo ssh-keyscan 35.228.12.69 >> ~/.ssh/known_hosts
         
       - name: Send files
-        run: rsync --delete --recursive --omit-dir-times -e "ssh -i ~/.ssh/garden-web" application/build/ kirill60@35.228.12.69:~/garden-web/application/build/
+        run: rsync --delete --recursive --omit-dir-times -e "ssh -i ~/.ssh/task-web" application/build/ kirill60@35.228.12.69:~/task-web/application/build/
 
