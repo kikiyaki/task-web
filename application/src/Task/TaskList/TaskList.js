@@ -1,11 +1,13 @@
 import React from 'react';
 import './TaskList.css';
+import TaskItem from "../TaskItem/TaskItem";
 
-export default function TaskList() {
+export default function TaskList(props) {
     return (
         <ul className="task-ul">
-            <li>1</li>
-            <li>2</li>
+            {props.taskList.map(task => {
+                return <TaskItem task={task} key={task.id}/>
+            })}
         </ul>
     );
 }
