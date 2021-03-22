@@ -2,5 +2,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1px;
+    padding: 2px;
+    margin: 4px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+}
+
+.task-item-rm {
+    background: #f88;
+    border: none;
+    border-radius: 3px;
 }

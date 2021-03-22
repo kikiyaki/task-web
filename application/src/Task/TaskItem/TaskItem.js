@@ -6,9 +6,10 @@ export default function (props) {
         <li className="task-item-li">
             <label>
                 <input type="checkbox"/>
+                &nbsp;
                 {props.task.title}
             </label>
-            <button>&times;</button>
+            <button className="task-item-rm">&times;</button>
         </li>
     )
 }
