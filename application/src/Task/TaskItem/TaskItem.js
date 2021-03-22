@@ -1,9 +1,14 @@
-import React from 'react';
+import React from 'react'
+import './taskItem.css'
 
 export default function (props) {
     return (
-        <li>
-            {props.task.title}
+        <li className="task-item-li">
+            <label>
+                <input type="checkbox"/>
+                {props.task.title}
+            </label>
+            <button>&times;</button>
         </li>
-    );
+    )
 }
