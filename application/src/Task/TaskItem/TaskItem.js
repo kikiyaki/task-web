@@ -2,11 +2,18 @@ import React from 'react'
 import './taskItem.css'
 
 export default function TaskItem({task, readyOnChange}) {
-    console.log(task)
+    let liClasses = ["task-item-li"];
+    if (task.ready) {
+        liClasses.push("task-item-li--ready");
+    }
+
     return (
-        <li className="task-item-li">
+        <li className={liClasses.join(" ")}>
             <label>
-                <input type="checkbox" onChange={() => readyOnChange(task.id)}/>
+                <input
+                    type="checkbox"
+                    checked={task.ready}
+                    onChange={() => readyOnChange(task.id)}/>
                 &nbsp;
                 {task.title}
             </label>
