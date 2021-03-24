@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './taskItem.css'
+import Context from "../../context";
 
 export default function TaskItem({task, readyOnChange}) {
+    const {removeTask} = useContext(Context)
     let liClasses = ["task-item-li"];
     if (task.ready) {
         liClasses.push("task-item-li--ready");
@@ -17,7 +19,7 @@ export default function TaskItem({task, readyOnChange}) {
                 &nbsp;
                 {task.title}
             </label>
-            <button className="task-item-rm">&times;</button>
+            <button className="task-item-rm" onClick={() => removeTask(task.id)}>&times;</button>
         </li>
     )
 }
