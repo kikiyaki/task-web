@@ -27,7 +27,11 @@ function App() {
       <Context.Provider value={{removeTask}}>
           <div className="wrapper">
               <h1>Task List</h1>
-              <TaskList taskList={taskList} readyOnChange={readyOnChange}/>
+              {
+                  taskList.length
+                  ? <TaskList taskList={taskList} readyOnChange={readyOnChange}/>
+                  : 'No tasks'
+              }
           </div>
       </Context.Provider>
   );
