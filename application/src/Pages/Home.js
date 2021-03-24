@@ -34,6 +34,7 @@ export default function Home() {
 
     return (
         <Context.Provider value={{removeTask}}>
+            <div className="wrapper">
                 <h1>Task List</h1>
                 <AddTask onCreate={onCreate}/>
                 {
@@ -41,6 +42,7 @@ export default function Home() {
                         ? <TaskList taskList={taskList} readyOnChange={readyOnChange}/>
                         : 'No tasks'
                 }
+            </div>
         </Context.Provider>
     )
 }
