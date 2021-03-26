@@ -49,7 +49,7 @@ export default function Login() {
                 </label>
                 <label>
                     <p>Password</p>
-                    <input onChange={onPasswordChange}/>
+                    <input type="password" onChange={onPasswordChange}/>
                 </label>
                 <p>
                     <a href="/register">Registration</a>

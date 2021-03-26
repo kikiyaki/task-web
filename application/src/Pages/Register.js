@@ -57,7 +57,7 @@ export default function Register() {
                 </label>
                 <label>
                     <p>Password</p>
-                    <input onChange={onPasswordChange}/>
+                    <input type="password" onChange={onPasswordChange}/>
                 </label>
                 <br/><br/>
                 <button type="submit">Register</button>
