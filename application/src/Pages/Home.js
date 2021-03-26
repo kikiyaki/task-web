@@ -4,10 +4,17 @@ import AddTask from "../Task/AddTask";
 import TaskList from "../Task/TaskList/TaskList";
 
 export default function Home() {
-    const [taskList, setTaskList] = React.useState([
-        {id: 1, title: 'Training', ready: true},
-        {id: 3, title: 'Shopping', ready: false}
-    ]);
+    const [taskList, setTaskList] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch('http://localhost/api/tasks', {
+            credentials: 'include',
+        })
+            .then(data => data.json())
+            .then(data => {
+                setTaskList(data)
+            })
+    }, [])
 
     function readyOnChange(id) {
         setTaskList(taskList.map(task => {
