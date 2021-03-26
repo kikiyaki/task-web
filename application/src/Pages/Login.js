@@ -1,9 +1,16 @@
 import React from 'react'
-import { useCookies } from 'react-cookie'
 
 export default function Login() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+
+    function onEmailChange(event) {
+        setEmail(event.target.value)
+    }
+
+    function onPasswordChange(event) {
+        setPassword(event.target.value)
+    }
 
     function onSubmit(event) {
         event.preventDefault()
@@ -26,16 +33,10 @@ export default function Login() {
                         email: email,
                         password: password
                     })
-                }).then()
+                }).then(() => {
+                    window.location = "/";
+                })
             })
-    }
-
-    function onEmailChange(event) {
-        setEmail(event.target.value)
-    }
-
-    function onPasswordChange(event) {
-        setPassword(event.target.value)
     }
 
     return (
