@@ -5,8 +5,8 @@ services:
     working_dir: /application
     volumes:
       - ./application:/application
-    command: npm install
-             npm run build
+    command: >
+      sh -c "npm install && npm start"
 
 #  nginx:
 #    image: nginx:latest
