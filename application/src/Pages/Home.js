@@ -31,7 +31,7 @@ export default function Home() {
         setTaskList(taskList.filter(task => task.id !== id))
     }
 
-    function onCreate(value) {
+    function createTask(value) {
         setTaskList(taskList.concat([{
             id: Math.floor(Math.random() * 100),
             title: value,
@@ -43,7 +43,7 @@ export default function Home() {
         <Context.Provider value={{removeTask}}>
             <div className="wrapper">
                 <h1>Task List</h1>
-                <AddTask onCreate={onCreate}/>
+                <AddTask onCreate={createTask}/>
                 {
                     taskList.length
                         ? <TaskList taskList={taskList} readyOnChange={readyOnChange}/>
