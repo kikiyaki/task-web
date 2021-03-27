@@ -21,18 +21,43 @@ export default function Home() {
     }
 
     function onUpdateTask(id) {
-        setTaskList(taskList.map(task => {
-                if (task.id === id) {
-                    task.ready = !task.ready
-                }
-
-                return task
+        fetch('http://localhost/token', {
+            credentials: 'include',
+        })
+            .then(data => data.json())
+            .then(data => {
+                localStorage.setItem('XSRF-TOKEN', data.data)
             })
-        );
+            .then(() => {
+                fetch('http://localhost/api/tasks/' + id, {
+                    method: 'PUT',
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-TOKEN': localStorage.getItem('XSRF-TOKEN')
+                    }
+                })
+                    .then(updateState)
+            })
     }
 
     function onDeleteTask(id) {
-        setTaskList(taskList.filter(task => task.id !== id))
+        fetch('http://localhost/token', {
+            credentials: 'include',
+        })
+            .then(data => data.json())
+            .then(data => {
+                localStorage.setItem('XSRF-TOKEN', data.data)
+            })
+            .then(() => {
+                fetch('http://localhost/api/tasks/' + id, {
+                    method: 'DELETE',
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-TOKEN': localStorage.getItem('XSRF-TOKEN')
+                    }
+                })
+                    .then(updateState)
+            })
     }
 
     function onCreateTask(value) {
