@@ -16,7 +16,7 @@ export default function Home() {
             })
     }, [])
 
-    function readyOnChange(id) {
+    function onUpdateTask(id) {
         setTaskList(taskList.map(task => {
                 if (task.id === id) {
                     task.ready = !task.ready
@@ -27,11 +27,11 @@ export default function Home() {
         );
     }
 
-    function removeTask(id) {
+    function onDeleteTask(id) {
         setTaskList(taskList.filter(task => task.id !== id))
     }
 
-    function createTask(value) {
+    function onCreateTask(value) {
         setTaskList(taskList.concat([{
             id: Math.floor(Math.random() * 100),
             title: value,
@@ -40,13 +40,13 @@ export default function Home() {
     }
 
     return (
-        <Context.Provider value={{removeTask}}>
+        <Context.Provider value={{onDeleteTask}}>
             <div className="wrapper">
                 <h1>Task List</h1>
-                <AddTask onCreate={createTask}/>
+                <AddTask onCreate={onCreateTask}/>
                 {
                     taskList.length
-                        ? <TaskList taskList={taskList} readyOnChange={readyOnChange}/>
+                        ? <TaskList taskList={taskList} readyOnChange={onUpdateTask}/>
                         : 'No tasks'
                 }
             </div>
