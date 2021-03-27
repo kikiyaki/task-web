@@ -2,6 +2,7 @@ import React from 'react'
 import Context from "../context";
 import AddTask from "../Task/AddTask";
 import TaskList from "../Task/TaskList/TaskList";
+import config from "../config";
 
 export default function Home() {
     const [taskList, setTaskList] = React.useState([]);
@@ -11,7 +12,7 @@ export default function Home() {
     }, [])
 
     function updateState() {
-        fetch('http://localhost/api/tasks', {
+        fetch('http://' + config().host + '/api/tasks', {
             credentials: 'include',
         })
             .then(data => data.json())
@@ -21,7 +22,7 @@ export default function Home() {
     }
 
     function onUpdateTask(id) {
-        fetch('http://localhost/token', {
+        fetch('http://' + config().host + '/token', {
             credentials: 'include',
         })
             .then(data => data.json())
@@ -29,7 +30,7 @@ export default function Home() {
                 localStorage.setItem('XSRF-TOKEN', data.data)
             })
             .then(() => {
-                fetch('http://localhost/api/tasks/' + id, {
+                fetch('http://' + config().host + '/api/tasks/' + id, {
                     method: 'PUT',
                     credentials: 'include',
                     headers: {
@@ -41,7 +42,7 @@ export default function Home() {
     }
 
     function onDeleteTask(id) {
-        fetch('http://localhost/token', {
+        fetch('http://' + config().host + '/token', {
             credentials: 'include',
         })
             .then(data => data.json())
@@ -49,7 +50,7 @@ export default function Home() {
                 localStorage.setItem('XSRF-TOKEN', data.data)
             })
             .then(() => {
-                fetch('http://localhost/api/tasks/' + id, {
+                fetch('http://' + config().host + '/api/tasks/' + id, {
                     method: 'DELETE',
                     credentials: 'include',
                     headers: {
@@ -61,7 +62,7 @@ export default function Home() {
     }
 
     function onCreateTask(value) {
-        fetch('http://localhost/token', {
+        fetch('http://' + config().host + '/token', {
             credentials: 'include',
         })
             .then(data => data.json())
@@ -69,7 +70,7 @@ export default function Home() {
                 localStorage.setItem('XSRF-TOKEN', data.data)
             })
             .then(() => {
-                fetch('http://localhost/api/tasks', {
+                fetch('http://' + config().host + '/api/tasks', {
                     method: 'POST',
                     credentials: 'include',
                     headers: {

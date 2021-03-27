@@ -1,8 +1,9 @@
 import React from 'react'
+import config from "../config";
 
 export default function Logout() {
 
-    fetch('http://localhost/token', {
+    fetch('http://' + config().host + '/token', {
         credentials: 'include',
     })
         .then(data => data.json())
@@ -10,7 +11,7 @@ export default function Logout() {
             localStorage.setItem('XSRF-TOKEN', data.data)
         })
         .then(() => {
-            fetch('http://localhost/logout', {
+            fetch('http://' + config().host + '/logout', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

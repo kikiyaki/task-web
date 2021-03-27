@@ -1,4 +1,5 @@
 import React from 'react'
+import config from "../config";
 
 export default function Register() {
     const [name, setName] = React.useState('');
@@ -19,7 +20,7 @@ export default function Register() {
 
     function onSubmit(event) {
         event.preventDefault()
-        fetch('http://localhost/token', {
+        fetch('http://' + config().host + '/token', {
             credentials: 'include',
         })
             .then(data => data.json())
@@ -27,7 +28,7 @@ export default function Register() {
                 localStorage.setItem('XSRF-TOKEN', data.data)
             })
             .then(() => {
-                fetch('http://localhost/login', {
+                fetch('http://' + config().host + '/login', {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
