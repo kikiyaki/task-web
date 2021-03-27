@@ -7,6 +7,10 @@ export default function Home() {
     const [taskList, setTaskList] = React.useState([]);
 
     React.useEffect(() => {
+        updateState()
+    }, [])
+
+    function updateState() {
         fetch('http://localhost/api/tasks', {
             credentials: 'include',
         })
@@ -14,7 +18,7 @@ export default function Home() {
             .then(data => {
                 setTaskList(data)
             })
-    }, [])
+    }
 
     function onUpdateTask(id) {
         setTaskList(taskList.map(task => {
@@ -32,11 +36,27 @@ export default function Home() {
     }
 
     function onCreateTask(value) {
-        setTaskList(taskList.concat([{
-            id: Math.floor(Math.random() * 100),
-            title: value,
-            ready: false
-        }]))
+        fetch('http://localhost/token', {
+            credentials: 'include',
+        })
+            .then(data => data.json())
+            .then(data => {
+                localStorage.setItem('XSRF-TOKEN', data.data)
+            })
+            .then(() => {
+                fetch('http://localhost/api/tasks', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'X-CSRF-TOKEN': localStorage.getItem('XSRF-TOKEN'),
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: value
+                    })
+                })
+                    .then(updateState)
+            })
     }
 
     return (
