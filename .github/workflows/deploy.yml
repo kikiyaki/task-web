@@ -23,8 +23,8 @@ jobs:
           sudo chmod 400 ~/.ssh/task-web 
           sudo touch ~/.ssh/known_hosts
           sudo chmod 0777 ~/.ssh/known_hosts
-          sudo ssh-keyscan 35.228.12.69 >> ~/.ssh/known_hosts
+          sudo ssh-keyscan 34.90.174.177 >> ~/.ssh/known_hosts
         
       - name: Send files
-        run: rsync --delete --recursive --omit-dir-times -e "ssh -i ~/.ssh/task-web" application/build/ kirill60@35.228.12.69:~/task-web/application/build/
+        run: rsync --delete --recursive --omit-dir-times -e "ssh -i ~/.ssh/task-web" application/build/ kirill60@34.90.174.177:~/task-web/application/build/
 
