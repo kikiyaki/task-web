@@ -27,4 +27,5 @@ services:
     - 3001:3001
     volumes:
     - ./proxy:/proxy
-    command: nohup node index.js > /dev/null 2>&1 &
+    command: >
+      sh -c "npm install && nohup node index.js > /dev/null 2>&1 &"
