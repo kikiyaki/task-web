@@ -1,5 +1,5 @@
 export default function config() {
     return {
-        host: '104.198.254.191'
+        host: '35.228.12.69:3001'
     }
 }
