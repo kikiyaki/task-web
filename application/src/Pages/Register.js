@@ -28,7 +28,7 @@ export default function Register() {
                 localStorage.setItem('XSRF-TOKEN', data.data)
             })
             .then(() => {
-                fetch('http://' + config().host + '/login', {
+                fetch('http://' + config().host + '/register', {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
