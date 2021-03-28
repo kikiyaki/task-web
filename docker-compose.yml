@@ -13,6 +13,7 @@ services:
     container_name: web-nginx
     ports:
       - 80:80
+      - 85:85
     volumes:
       - ./application/build:/var/www
       - ./container/nginx/core:/etc/nginx/conf.d
