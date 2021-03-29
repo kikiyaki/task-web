@@ -40,7 +40,18 @@ export default function Register() {
                         email: email,
                         password: password
                     })
-                }).then()
+                })
+                    .then(data => {
+                        if (data.status === 200) {
+                            window.location = '/'
+                        }
+                        return data
+                    })
+                    .then(data => {
+                        if (data.status === 422) {
+                            return data.json().then(data => alert(data.error))
+                        }
+                    })
             })
     }
 

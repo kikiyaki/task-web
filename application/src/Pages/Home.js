@@ -19,7 +19,7 @@ export default function Home() {
                 if (data.status === 401) {
                     window.location = '/login'
                 }
-                return  data.json()
+                return data.json()
             })
             .then(data => {
                 setTaskList(data)
