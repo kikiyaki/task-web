@@ -15,7 +15,12 @@ export default function Home() {
         fetch('http://' + config().host + '/api/tasks', {
             credentials: 'include',
         })
-            .then(data => data.json())
+            .then(data => {
+                if (data.status === 401) {
+                    window.location = '/login'
+                }
+                return  data.json()
+            })
             .then(data => {
                 setTaskList(data)
             })
