@@ -34,8 +34,12 @@ export default function Login() {
                         email: email,
                         password: password
                     })
-                }).then(() => {
-                    window.location = "/";
+                }).then(data => {
+                    if (data.status === 401) {
+                        alert('Wrong password or email')
+                    } else {
+                        window.location = "/"
+                    }
                 })
             })
     }
